@@ -1,0 +1,30 @@
+package pom;
+
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import confi.Configuration;
+
+public class TC01_Excel {
+	public static void main(String[] args) throws InterruptedException, EncryptedDocumentException, IOException {
+
+		Utility util = new Utility();
+		WebDriver driver1 = util.initDriver();
+
+		SignUpFromExcelSheet sign = new SignUpFromExcelSheet(driver1);
+		//TC01
+		sign.enterUserId(util.readExcelSheet(1, 1));
+		sign.enterLastName(util.readExcelSheet(2, 1));
+		sign.enterEmailId(util.readExcelSheet(3, 1));
+		sign.reenterEmail(util.readExcelSheet(4, 1));
+		sign.enterPassword(util.readExcelSheet(5, 1));
+		sign.selectDate(util.readExcelSheet(6, 1));
+		sign.selectMonth(util.readExcelSheet(7, 1));
+		sign.selectYear(util.readExcelSheet(8, 1));
+		sign.selectGender();
+
+	}
+}
